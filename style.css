@@ -36,3 +36,28 @@
     padding-left: 0;
     border-radius: 0;
   }
+  footer {
+    margin-bottom:50px;
+    background-color: green;
+ }
+ footer h3 {
+     text-align:center;
+     font-size:30px;
+ }
+ 
+ footer h6 {
+     text-align: center;
+     margin-top:100px;
+     margin bottom: 50px;
+     padding-bottom: 40px;
+     color: white;
+ }
+ footer a {
+     display: inline-block;
+     float: right;
+     color: blue;
+     margin-right: 50px;
+     padding-top:10px;
+     letter-spacing: 5px;
+ }
+   

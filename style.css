@@ -1,11 +1,14 @@
-.h1 {
-    background-image: url("https://unsplash.com/photos/pKpipZVVEC0");
+.heading {
+    text-align:center;
 }
 
-p {
-    color: blue;
+.form {
+    margin-left: 500px;
+    margin-right: 500px;
 }
 
-body {
-    background-color: greenyellow;
+
+.submit {
+    margin-left: 200px;
+    margin-bottom: 50px;
 }

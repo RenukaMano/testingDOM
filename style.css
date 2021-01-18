@@ -7,10 +7,14 @@
     margin-left: 500px;
     margin-right: 500px;
 }
-
+.title {
+    margin-left:100px;
+    margin-right: 100px;
+}
 
 .submit {
     margin-left: 200px;
+    margin-right: 100px;
     margin-bottom: 50px;
 }
 

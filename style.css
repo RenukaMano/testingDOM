@@ -39,6 +39,7 @@
   }
   
 
+
 .jumbotron-fluid {
   padding-right: 0;
   padding-left: 0;
@@ -67,7 +68,7 @@ width: auto;
 
 footer {
   margin-bottom:50px;
-  background-color: green;
+  background-color: whitesmoke;
 }
 footer h3 {
    text-align:center;
@@ -75,11 +76,11 @@ footer h3 {
 }
 
 footer h6 {
-   text-align: center;
+   text-align: left;
    margin-top:100px;
    margin-bottom: 50px;
    padding-bottom: 40px;
-   color:white;
+   color:blue;
 }
 footer a {
    display: inline-block;
@@ -90,3 +91,8 @@ footer a {
    letter-spacing: 5px;
 }
 
+nav {
+  align-items: center;
+  
+  padding-top: 50px;
+}

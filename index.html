@@ -235,7 +235,7 @@ height: 400px;">
 
 
 <div class="bootstrap-iso bg-light justify-content-center ">
-    <div class="container-fluid bg-light" id="NEW TASK">
+    <div class="container-fluid d-flex justify-content-center align-items-center h-100 bg-light" id="NEW TASK">
      <div class="row">
       <div class=" col">
             <form method="post">
@@ -255,21 +255,21 @@ height: 400px;">
                 <br><br>
                 <div class="form ">
                         <div class=" mb-3 row name  ">
-                            <label for="staticname" class="col-sm-2 col-form-label">Name</label>
+                            <label for="staticname" class=" col-form-label">Name</label>
                             <div class="col-sm-10">
-                            <input type="text"  class="form-control-plaintext" style="width:500px;" id="staticname" value="Enter TaskName">
+                            <input type="text"  class="form-control" style="width:500px;" id="staticname" value="Enter TaskName">
                             </div>
                         </div>
                         <br>
                         <div class=" mb-3 row ">
-                            <label for="exampleTextarea1" class="col-sm-2 col-form-label">Description</label>
+                            <label for="exampleTextarea1" class=" col-form-label">Description</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" style="width:500px;" id="exampleTextarea1" rows="3"></textarea>
                             </div> 
                         </div> 
                         <br>
-                        <div class="col-md-12 mb-4 row">
-                            <label for="assignedname" class="col-sm-2 col-form-label">Assigned to</label>
+                        <div class=" mb-3 row">
+                            <label for="assignedname" class="control-label ">Assigned to</label>
                             <div class="col-sm-10">
                                 <div class="dropdown ">
                                     <button class="btn btn-secondary dropdown-toggle mx-auto assigned-name" type="button" id="dropdownMenuButton"  data-bs-toggle="dropdown" aria-expanded="false">
@@ -286,21 +286,21 @@ height: 400px;">
                         </div>
                         <br>
                         <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control-plaintext" style="width:500px;" id="staticEmail" value="email@example.com">
+                            <label for="staticEmail" class=" col-form-label">Email</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" style="width:500px;" id="staticEmail" value="email@example.com">
                             </div>
                         </div><br>
                         
                     <div class=" mb-3 row form-group"> 
-                            <label class="control-label col-sm-2" for="date">Due Date</label>
+                            <label class="control-label" for="date">Due Date</label>
                             <div class="col-sm-10">
                                 <input class="form-control" style="width:200px;" id="date" name="date" placeholder="MM/DD/YYY" type="date"/>
                             </div>
                         </div>
                         <br>
                         <div class="mb-3 row">
-                            <label for="status" class="col-sm-2 col-form-label">Status</label>
+                            <label for="status" class=" col-form-label">Status</label>
                             <div class="col-sm-10">
                                 <div class="dropdown ">
                                     <button class="btn btn-secondary dropdown-toggle mx-auto status" type="button" id="dropdownMenuButton"  data-bs-toggle="dropdown" aria-expanded="false">
@@ -309,7 +309,6 @@ height: 400px;">
                                     <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                                         <li><a class="dropdown-item" href="#completed">Completed</a></li>
                                         <li><a class="dropdown-item" href="#assigned">Assigned</a></li>
-                                        <li><a class="dropdown-item" href="#inprogress">In progress</a></li>
                                         <li><a class="dropdown-item" href="#onhold">On Hold</a></li>
                                         <li><a class="dropdown-item" href="#started">Started</a></li>
                                     </ul>

@@ -65,8 +65,8 @@
         </header>
     <br><br><br>
         <!-- Page Features -->
-        <div class="container">
-        <div class="row text-center">
+        <div  class="container">
+        <div id ='taskList' class="row text-center">
     
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
@@ -228,15 +228,21 @@
                     <div class="title display-4 text-center bg-light ">
                         <h2>NEW TASK</h2>
                     </div><br><br>
-                    <div id = "category" class="dropdown heading">
-                        <button class="btn btn-secondary dropdown-toggle mx-auto" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div  class="dropdown heading">
+                        <!-- <button class="btn btn-secondary dropdown-toggle mx-auto" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         Category
                         </button><br><br>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="#study">Study</a></li>
                         <li><a class="dropdown-item" href="#family">Family</a></li>
                         <li><a class="dropdown-item" href="#health">Health</a></li>
-                        </ul>
+                        </ul> -->
+                        <select id = "category"  style="width:200px;" aria-label="Default select example">
+                            <option selected>Category</option>
+                            <option value="Study">Study</option>
+                            <option value="Family">Family</option>
+                            <option value="Health">Health</option>
+                          </select>
                     </div>
                     <br><br>
                     <div class="form ">
@@ -272,20 +278,26 @@
                                 <label for="assignedname" class="control-label ">Assigned to</label>
                                 <div id = 'assigned' class="col-sm-10">
                                     <div class="dropdown ">
-                                        <button id="dropdownMenuButton" class="btn btn-secondary dropdown-toggle mx-auto assigned-name" type="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                                        <!-- <button id="dropdownMenuButton" class="btn btn-secondary dropdown-toggle mx-auto assigned-name" type="button"  data-bs-toggle="dropdown" aria-expanded="false">
                                             Select
-                                        </button>
-                                        <!-- <select id="mySelect" class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                        </button> -->
+                                        <!-- <select id="selectId" class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                                             <option class="dropdown-item" value="deepa">Deepa</option>
                                             <option class="dropdown-item" value="laura">Laura</option>
                                             <option class="dropdown-item"value="renuka">Renuka</option>
                                             
                                           </select> -->
-                                        <ul id = 'items' class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                          <select id = "selectId" class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="Deepa">Deepa</option>
+                                            <option value="Laura">Laura</option>
+                                            <option value="Renuka">Renuka</option>
+                                          </select>
+                                        <!-- <ul id = 'items' class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                                             <li class="item"><a class="dropdown-item" href="#deepa" >Deepa</a></li>
                                             <li class="item"><a class="dropdown-item" href="#laura" >Laura</a></li>
                                             <li class="item"><a class="dropdown-item" href="#renuka" >Renuka</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
     
                                 </div>
@@ -324,7 +336,7 @@
                                 <label for="status" class=" col-form-label">Status</label>
                                 <div class="col-sm-10">
                                     <div class="dropdown ">
-                                        <button id="dropdownMenuButton1" class="btn btn-secondary dropdown-toggle mx-auto status" type="button"   data-bs-toggle="dropdown" aria-expanded="false">
+                                        <!-- <button id="dropdownMenuButton1" class="btn btn-secondary dropdown-toggle mx-auto status" type="button"   data-bs-toggle="dropdown" aria-expanded="false">
                                             Select
                                         </button>
                                         <ul id="menu" class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
@@ -332,7 +344,14 @@
                                             <li><a class="dropdown-item" href="#assigned">Assigned</a></li>
                                             <li><a class="dropdown-item" href="#onhold">On Hold</a></li>
                                             <li><a class="dropdown-item" href="#started">Started</a></li>
-                                        </ul>
+                                        </ul> -->
+                                        <select id = "menu"  style="width:200px;" aria-label="Default select example">
+                                            <option selected>status</option>
+                                            <option value="Completed">Completed</option>
+                                            <option value="Assigned">Assigned</option>
+                                            <option value="On Hold">On Hold</option>
+                                            <option value="Started">Started</option>
+                                          </select>
                                     </div>
     
                                 </div>

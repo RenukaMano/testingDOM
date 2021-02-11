@@ -6,9 +6,13 @@ let newTaskValue = document.querySelector('#exampleTextarea1');
 let assigned = document.querySelector('#assigned');
 let newTaskEmail = document.querySelector('#staticEmail');
 let newTaskDate = document.querySelector('#date');
-let getName = document.querySelector('#items');
+let getName = document.querySelector('#selectId');
 let newStatus = document.querySelector('#menu');
+let categoryName = document.querySelector('#category');
+let categoryName1
 console.log(getName.innerText)
+let taskHTML = createTaskHtml('name')
+console.log(taskHTML);
 
 const validFormFieldInput = (data) => {
     if(newTaskNameInput.value.length < 5) {
@@ -24,7 +28,7 @@ newTaskValue.addEventListener('click', validFormFieldInput);
 
 // console.log(newTaskNameInput.value)
 // console.log(validFormFieldInput())
-
+let assignedTo 
 const validDescription = (data) => {
     if(newTaskValue.value.length < 5) {
         newTaskValue.classList.add('is-invalid');
@@ -34,8 +38,12 @@ const validDescription = (data) => {
         newTaskValue.classList.remove('is-invalid')
     }
     data.preventDefault();
+    assignedTo = document.querySelector('#selectId').value;
+    console.log(assignedTo)
 }
 assigned.addEventListener('click', validDescription); 
+
+
 
 // const validEmail = (data) => {
 //     if(newTaskEmail.value.length < 5) {
@@ -77,7 +85,7 @@ if (emailIsValid(newTaskEmail.value)) {
 
 
 // function myFunction() {
-//     let items = document.getElementById("items.value")
+//     let selectId = document.getElementById("SelectId.value")
 // const validDate = () => {
 //     if(newTaskNameInput.value.length < 5) {
 //         newTaskNameInput.classList.add('is-invalid');
@@ -119,6 +127,35 @@ if (emailIsValid(newTaskEmail.value)) {
     today = yyyy + '-' + mm + '-' + dd;
    return today;
     }
+
+    //category selection:
+    categoryName.addEventListener('click', (event) => {
+        event.preventDefault();
+        categoryName1 = document.querySelector('#category').value;
+        })
+        console.log(categoryName1);
+
+    // function myFunction() {
+    //     categorys = document.querySelector("#category").value;
+    //     console.log(categorys)
+        
+    //   }
+    //   categorys.addEventListener('click', myFunction)
+    
+
+    // $('category').click(function() {
+    //     $(this).parent().data('value', $(this).data('value')); 
+    //   }); $('category').data('value');
+//     let listHandler = new Object();
+//  listHandler.getAllValues = function (categoryList)
+// {
+//     let categoryValues = [];
+//     for (var i =1; i<categoryList.options.length; i++) {
+//         categoryValues.push(categoryList.options[i].value);
+//     }
+// }
+
+
 // console.log(getDate())
 
 
@@ -231,8 +268,9 @@ const clearFormFields = () => {
     newTaskValue.value = "";
     assigned.value = "";
     newTaskEmail.value = "";
-    newStatus.value = "In Progress";
+    newStatus.value = " ";
     newTaskDate.value = "";
+     categoryName ="";
     newTaskNameInput.classList.remove("is-valid");
     newTaskValue.classList.remove("is-valid");
     assigned.classList.remove("is-valid");
@@ -243,14 +281,17 @@ const clearFormFields = () => {
   form.addEventListener('click', (event) => {
     event.preventDefault();
     taskManager.addTask(
+        categoryName1,
         newTaskNameInput.value,
         newTaskValue.value,
-        assigned.value,
+        assignedTo,
         newTaskEmail.value,
         newTaskDate.value,
         newStatus.value
+        
       );
       console.log(taskManager)
       clearFormFields();
+      taskManager.render();
     }
   );

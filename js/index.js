@@ -12,7 +12,7 @@ let categoryName = document.querySelector('#category');
 let categoryName1
 console.log(getName.innerText)
 let taskHTML = createTaskHtml('name')
-console.log(taskHTML);
+// console.log(taskHTML);
 
 const validFormFieldInput = (data) => {
     if(newTaskNameInput.value.length < 5) {
@@ -207,7 +207,11 @@ function gettheDate(date) {
     //     console.log(d1.value)
         
     // })
-
+    // $(document).ready(function(){
+    //     $("Mark Completed").click(function(){
+    //       $("taskList").remove();
+    //     });
+    //   });
  
     newStatus.addEventListener('click', (event) => {
     event.preventDefault();
@@ -295,3 +299,31 @@ const clearFormFields = () => {
       taskManager.render();
     }
   );
+
+
+let markComplete = document.querySelector("#taskList");
+    markComplete.addEventListener("click",  (event) => {
+        if(event.target.classList.contains("Completed")){
+            // console.log(event.target.parentElement.parentElement.parentElement)
+            event.preventDefault();
+            const childElement = event.target.parentElement.parentElement;
+            const parentTask = childElement.parentElement;
+            // parentTask.removeChild(childElement);
+        
+    // this.taskList.style.display = 'none';
+    // console.log('hi');
+  
+    // console.log(parentTask)
+//   let taskId = parentTask.querySelector('.Id');
+  let taskId = Number(parentTask.querySelector('.Id').innerText);
+  console.log(taskId)
+  let task = taskManager.getTaskByID(taskId) 
+//   console.log(taskId)
+//    console.log(task)
+   task.task.status = "Completed"
+   
+//    console.log(task)
+
+}
+taskManager.render();
+});

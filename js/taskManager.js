@@ -103,6 +103,28 @@ class TaskManager {
     let toDoList = document.querySelector('#taskList');
     toDoList.innerHTML = taskHtml;
   }
+  save () 
+{
+  let tasksJson = JSON.stringify(this.tasks);
+    localStorage.setItem('tasks', tasksJson);
+    // console.log(taskJson);
+  let currentId = JSON.stringify(this.currentId);
+  localStorage.setItem('currentId', currentId);
+  console.log(currentId)
+}
+load(){
+  if(localStorage.getItem('tasks'))
+    {let tasksJson =localStorage.getItem('tasks')
+    this.tasks =JSON.parse(tasksJson)}
+    if(localStorage.getItem('currentId'))
+    {let currentId =localStorage.getItem('currentId')
+    this.currentId =JSON.parse(currentId)}
+    
+}
+clear(){
+  this.tasks =[];
+  this.currentId =0;
+}
 }
 
 // const task1 = new TaskManager();

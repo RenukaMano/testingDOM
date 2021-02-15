@@ -1,47 +1,81 @@
+
 const taskManager = new TaskManager(0);
+taskManager.load();
+taskManager.render();
+
 
 let form = document.querySelector('#taskForm')
 let newTaskNameInput = document.querySelector("#staticname");
 let newTaskValue = document.querySelector('#exampleTextarea1');
-let assigned = document.querySelector('#assigned');
+// let assigned = document.querySelector('#assigned');
+let assignedTo;
 let newTaskEmail = document.querySelector('#staticEmail');
 let newTaskDate = document.querySelector('#date');
 let getName = document.querySelector('#selectId');
 let newStatus = document.querySelector('#menu');
+
+let newStatus1;
 let categoryName = document.querySelector('#category');
+let clearTask = document.querySelector('#clearTask');
+let validationFail =0;
+
 let categoryName1
 console.log(getName.innerText)
 let taskHTML = createTaskHtml('name')
-// console.log(taskHTML);
 
-const validFormFieldInput = (data) => {
-    if(newTaskNameInput.value.length < 5) {
-        newTaskNameInput.classList.add('is-invalid');
-        newTaskNameInput.classList.remove('is-valid')
+const validCategory = (data) => {
+    //  newCategory = document.querySelector('#category1').value;
+    if(categoryName.value === 'Select') {
+        categoryName.classList.add('is-invalid');
+        categoryName.classList.remove('is-valid')
+        validationFail++;
+        
     } else {
-        newTaskNameInput.classList.add('is-valid');
-        newTaskNameInput.classList.remove('is-invalid')
+        categoryName.classList.add('is-valid');
+        categoryName.classList.remove('is-invalid')
+        newCategory = document.querySelector('#category').value;
+        
     }
+ 
     data.preventDefault();
 }
-newTaskValue.addEventListener('click', validFormFieldInput); 
+form.addEventListener('click', validCategory); 
+
+
+// const validFormFieldInput = (data) => {
+//     if(newTaskNameInput.value.length < 5) {
+//         newTaskNameInput.classList.add('is-invalid');
+//         newTaskNameInput.classList.remove('is-valid')
+//         validationFail++;
+//     } else {
+//         newTaskNameInput.classList.add('is-valid');
+//         newTaskNameInput.classList.remove('is-invalid')
+//     }
+//     data.preventDefault();
+// }
+// newTaskValue.addEventListener('click', validFormFieldInput); 
 
 // console.log(newTaskNameInput.value)
 // console.log(validFormFieldInput())
-let assignedTo 
-const validDescription = (data) => {
-    if(newTaskValue.value.length < 5) {
-        newTaskValue.classList.add('is-invalid');
-        newTaskValue.classList.remove('is-valid')
+// let assignedTo 
+
+const validAssignedTo = (data) => {
+    
+    if(getName.value === 'Select') {
+        getName.classList.add('is-invalid');
+       getName.classList.remove('is-valid')
+        validationFail++;
+      
     } else {
-        newTaskValue.classList.add('is-valid');
-        newTaskValue.classList.remove('is-invalid')
+        getName.classList.add('is-valid');
+        getName.classList.remove('is-invalid')
+        assignedTo = document.querySelector('#selectId').value;
+        
     }
+ 
     data.preventDefault();
-    assignedTo = document.querySelector('#selectId').value;
-    console.log(assignedTo)
 }
-assigned.addEventListener('click', validDescription); 
+form.addEventListener('click', validAssignedTo); 
 
 
 
@@ -58,6 +92,35 @@ assigned.addEventListener('click', validDescription);
 // }
 // newTaskDate.addEventListener('click', validEmail); 
 
+const validFormFieldInput = (data) => {
+    if(newTaskNameInput.value.length < 5) {
+        newTaskNameInput.classList.add('is-invalid');
+        newTaskNameInput.classList.remove('is-valid')
+        validationFail++;
+        console.log(validationFail)
+    } else {
+        newTaskNameInput.classList.add('is-valid');
+        newTaskNameInput.classList.remove('is-invalid')
+    }
+    data.preventDefault();
+}
+form.addEventListener('click', validFormFieldInput); 
+
+
+const validDescription = (data) => {
+    if(newTaskValue.value.length < 5) {
+        newTaskValue.classList.add('is-invalid');
+        newTaskValue.classList.remove('is-valid')
+        validationFail++;
+    } else {
+        newTaskValue.classList.add('is-valid');
+        newTaskValue.classList.remove('is-invalid')
+    }
+    data.preventDefault();
+    assignedTo = document.querySelector("#selectId").value
+}
+form.addEventListener('click', validDescription); 
+
 
 
 
@@ -67,42 +130,19 @@ assigned.addEventListener('click', validDescription);
 function emailIsValid (email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   };
-  newTaskEmail.addEventListener('click', (event) => {
-event.preventDefault();
-if (emailIsValid(newTaskEmail.value)) {
-    newTaskEmail.classList.add('is-valid');
-    newTaskEmail.classList.remove('is-invalid');
-} else {
+  
+form.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (emailIsValid(newTaskEmail.value)) {
+        newTaskEmail.classList.add('is-valid');
+        newTaskEmail.classList.remove('is-invalid');
+    } 
+    else {
     newTaskEmail.classList.add('is-invalid');
     newTaskEmail.classList.remove('is-valid');
-        }
-    })
-// console.log("email:  " + newTaskEmail.value)
-// console.log(emailIsValid(newTaskEmail.value))});
-
-
-
-
-
-// function myFunction() {
-//     let selectId = document.getElementById("SelectId.value")
-// const validDate = () => {
-//     if(newTaskNameInput.value.length < 5) {
-//         newTaskNameInput.classList.add('is-invalid');
-//         newTaskNameInput.classList.remove('is-valid')
-//     } else {
-//         newTaskNameInput.classList.add('is-valid');
-//         newTaskNameInput.classList.remove('is-invalid')
-//     }
-//     data.preventDefault();
-// }
-// newTaskValue.addEventListener('click', validFormFieldInput); 
-
-
-
-   // console.log("email:  " + newEmailInput.value)
-    //console.log(emailIsValid(newEmailInput.value))
-    // console.log("date:  " + newTaskDate.value);
+    validationFail++;
+    }
+});
 
     getName.addEventListener('click', (data) => {
         data.preventDefault();
@@ -129,11 +169,11 @@ if (emailIsValid(newTaskEmail.value)) {
     }
 
     //category selection:
-    categoryName.addEventListener('click', (event) => {
-        event.preventDefault();
-        categoryName1 = document.querySelector('#category').value;
-        })
-        console.log(categoryName1);
+    // categoryName.addEventListener('click', (event) => {
+    //     event.preventDefault();
+    //     categoryName1 = document.querySelector('#category').value;
+    //     })
+    //     console.log(categoryName1);
 
     // function myFunction() {
     //     categorys = document.querySelector("#category").value;
@@ -157,7 +197,20 @@ if (emailIsValid(newTaskEmail.value)) {
 
 
 // console.log(getDate())
-
+form.addEventListener('click', (event) => {
+    event.preventDefault();
+    let Test = comparison(getDate(), newTaskDate.value);
+    if (Test) {
+        newTaskDate.classList.add('is-valid');
+        newTaskDate.classList.remove('is-invalid');
+        
+    }
+    else {
+        newTaskDate.classList.add('is-invalid');
+        newTaskDate.classList.remove('is-valid');
+        validationFail++;
+    }
+});
 
 function gettheDate(date) {
     if (date.select) {
@@ -213,18 +266,36 @@ function gettheDate(date) {
     //     });
     //   });
  
-    newStatus.addEventListener('click', (event) => {
-    event.preventDefault();
-    let Test = comparison(getDate(), newTaskDate.value);
-    if (Test) {
-        newTaskDate.classList.add('is-valid');
-        newTaskDate.classList.remove('is-invalid');
+    // newStatus.addEventListener('click', (event) => {
+    // event.preventDefault();
+    // let Test = comparison(getDate(), newTaskDate.value);
+    // if (Test) {
+    //     newTaskDate.classList.add('is-valid');
+    //     newTaskDate.classList.remove('is-invalid');
+    // }
+    // else {
+    //     newTaskDate.classList.add('is-invalid');
+    //     newTaskDate.classList.remove('is-valid');
+    //         }
+    // })
+
+    const validStatus = (data) => {
+    
+        if(newStatus.value === 'Select') {
+            newStatus.classList.add('is-invalid');
+            newStatus.classList.remove('is-valid')
+            validationFail++;
+          
+        } else {
+            newStatus.classList.add('is-valid');
+            newStatus.classList.remove('is-invalid')
+            newStatus1 = document.querySelector('#menu').value;
+            
+        }
+     
+        data.preventDefault();
     }
-    else {
-        newTaskDate.classList.add('is-invalid');
-        newTaskDate.classList.remove('is-valid');
-            }
-    })
+    form.addEventListener('click', validStatus); 
 //this function is to get the date of today            
 // const getDate = () => {
 //     let today = new Date();
@@ -237,67 +308,54 @@ function gettheDate(date) {
 //this function compare the date of today with the input date
 const comparison = (today, newTaskDate) => {
     if(newTaskDate >= today) {
-        //console.log("correcto");
+        
         return true;
     }
     else {
-        //console.log("viejo");
+       
         return false;
     }        
     console.log(Test);
 }
 
 
-//    let q = getDate();
-//    let m = q.getMonth()+1;
-//    var d = q.getDay();
-//    var y = q.getFullYear();
-   
-//    var date = new Date(y,m,d);
-   
-//    mydate=new Date('2011-04-11');
-//    console.log(date);
-//    console.log(mydate)
-   
-//    if(date>mydate)
-//    {
-//        alert("greater");
-//    }
-//    else
-//    {
-//        alert("smaller")
-//    }
+
 const clearFormFields = () => {
     newTaskNameInput.value = "";
     newTaskValue.value = "";
-    assigned.value = "";
+    assigned.value = "Select";
     newTaskEmail.value = "";
-    newStatus.value = " ";
+    newStatus.value = "Select ";
     newTaskDate.value = "";
-     categoryName ="";
+     categoryName.value="Select";
     newTaskNameInput.classList.remove("is-valid");
     newTaskValue.classList.remove("is-valid");
     assigned.classList.remove("is-valid");
     newTaskEmail.classList.remove('is-valid')
     newStatus.classList.remove("is-valid");
     newTaskDate.classList.remove("is-valid");
+    categoryName.classList.remove("is-valid");
   };
   form.addEventListener('click', (event) => {
     event.preventDefault();
+    if(validationFail===0){
     taskManager.addTask(
-        categoryName1,
+        newCategory,
         newTaskNameInput.value,
         newTaskValue.value,
         assignedTo,
         newTaskEmail.value,
         newTaskDate.value,
-        newStatus.value
+        newStatus1
         
       );
       console.log(taskManager)
       clearFormFields();
       taskManager.render();
-    }
+      taskManager.save();
+    } else{validationFail = 0;
+    return;}
+}
   );
 
 
@@ -318,12 +376,14 @@ let markComplete = document.querySelector("#taskList");
   let taskId = Number(parentTask.querySelector('.Id').innerText);
   console.log(taskId)
   let task = taskManager.getTaskByID(taskId) 
-//   console.log(taskId)
-//    console.log(task)
    task.task.status = "Completed"
-   
-//    console.log(task)
-
-}
+   }
 taskManager.render();
+
+});
+
+clearTask.addEventListener('click', () =>{
+    localStorage.clear();
+    taskManager.clear();
+    taskManager.render();
 });

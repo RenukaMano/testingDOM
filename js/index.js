@@ -362,23 +362,20 @@ const clearFormFields = () => {
 let markComplete = document.querySelector("#taskList");
     markComplete.addEventListener("click",  (event) => {
         if(event.target.classList.contains("Completed")){
-            // console.log(event.target.parentElement.parentElement.parentElement)
-            event.preventDefault();
+           event.preventDefault();
             const childElement = event.target.parentElement.parentElement;
             const parentTask = childElement.parentElement;
-            // parentTask.removeChild(childElement);
         
-    // this.taskList.style.display = 'none';
-    // console.log('hi');
-  
-    // console.log(parentTask)
-//   let taskId = parentTask.querySelector('.Id');
   let taskId = Number(parentTask.querySelector('.Id').innerText);
   console.log(taskId)
   let task = taskManager.getTaskByID(taskId) 
    task.task.status = "Completed"
+//    document.getElementById('To Do List').scrollIntoView
+   
+
    }
 taskManager.render();
+taskManager.save();
 
 });
 

@@ -1,9 +1,9 @@
-const createTaskHtml =(id, category, name, description, assignedTo, email, dueDate, status, text, visibility) => {
+const createTaskHtml =(id, category, name, description, assignedTo, email, dueDate, status, text, visibility, image) => {
 
 const Newcard= `<div class="col-lg-4 col-md-6 mb-4">
   <div class="card h-100">
                 <div class="text-center" >  
-                     <img class="card-img-top rounded-circle img-fluid" src="https://st.depositphotos.com/1734074/3427/v/950/depositphotos_34271411-stock-illustration-vector-profile-icon.jpg" alt="Avatar" style="width:20%">
+                     <img class="card-img-top rounded-circle img-fluid" src=${image} alt="Avatar" style="width:20%">
                     </div>
                     <div class="card-body">
                 <div class="row justify-content-center">
@@ -33,6 +33,7 @@ const Newcard= `<div class="col-lg-4 col-md-6 mb-4">
               </div>
               <div  class="card-footer">
                 <a  class="btn btn-outline-success ${visibility} Completed">Mark Completed</a>
+                <a  class="btn btn-outline-success ${visibility} ">Edit</a>
               </div>
             </div>
             </div>
@@ -93,11 +94,22 @@ class TaskManager {
       }else{  visibility ='visible'
       text = 'text-danger'
     }
-      let taskHtml =createTaskHtml(currentTask.task.id, currentTask.task.category, currentTask.task.name, currentTask.task.description, currentTask.task.assignedTo, currentTask.task.email,currentTask.task.dueDate, currentTask.task.status, text, visibility)
+    let image;
+    if(currentTask.task.assignedTo === 'Deepa'){
+      image = 'https://ui-avatars.com/api/?name=D+M'
+    }
+    else if(currentTask.task.assignedTo === 'Laura') {
+      image ='https://ui-avatars.com/api/?name=L+V'
+    }
+    else { image='https://ui-avatars.com/api/?name=R+M'
+  } 
+
+      let taskHtml =createTaskHtml(currentTask.task.id, currentTask.task.category, currentTask.task.name, currentTask.task.description, currentTask.task.assignedTo, currentTask.task.email,currentTask.task.dueDate, currentTask.task.status, text, visibility, image)
       taskHtmlList.push(taskHtml)
       // console.log(currentTask.task.name, currentTask.task.description, currentTask.task.assignedTo, currentTask.task.email,currentTask.task.dueDate, currentTask.task.status)
       
     });
+    
     let taskHtml = taskHtmlList.join('\n');
     // console.log(taskHtml);
     let toDoList = document.querySelector('#taskList');
@@ -121,6 +133,17 @@ load(){
     this.currentId =JSON.parse(currentId)}
     
 }
+// image(name){
+//   if(name === 'Deepa'){
+//     image = 'https://ui-avatars.com/api/?name=D+M'
+//   }
+//   else if(name === 'Laura') {
+//     image ='https://ui-avatars.com/api/?name=L+V'
+//   }
+//   else { image='https://ui-avatars.com/api/?name=R+M'
+// } return this.image;
+// }
+
 clear(){
   this.tasks =[];
   this.currentId =0;

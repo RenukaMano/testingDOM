@@ -33,6 +33,7 @@ const Newcard= `<div class="col-lg-4 col-md-6 mb-4">
               </div>
               <div  class="card-footer">
                 <a  class="btn btn-outline-success ${visibility} Completed">Mark Completed</a>
+                <a  class="btn btn-outline-success ${visibility} ">Edit</a>
               </div>
             </div>
             </div>
